@@ -11,8 +11,8 @@ namespace Domain
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=localhost;Database=UDP_Client;Username=master;Password=12345678");
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //    => optionsBuilder.UseNpgsql("Host=localhost;Database=UDP_Client;Username=postgres;Password=9316");
 
 
         public DbSet<Client> Clients { get; set; }

@@ -5,13 +5,6 @@ namespace UDPClientService;
 
 public class ClientService : BackgroundService
 {
-    private readonly ILogger<ClientService> _logger;
-
-    public ClientService(ILogger<ClientService> logger)
-    {
-        _logger = logger;
-    }
-
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
@@ -33,11 +26,14 @@ public class ClientService : BackgroundService
             do
             {
                 message = Console.ReadLine();
+                if (message != null)
+                {
+                    // Sends a message to the host to which you have connected.
+                    Byte[] sendBytes = Encoding.ASCII.GetBytes(message);
+                
+                    udpClient.Send(sendBytes, sendBytes.Length);
+                }
 
-                // Sends a message to the host to which you have connected.
-                Byte[] sendBytes = Encoding.ASCII.GetBytes(message);
-
-                udpClient.Send(sendBytes, sendBytes.Length);
             } while (message != String.Empty);
 
             udpClient.Close();

@@ -6,13 +6,6 @@ namespace UDPServerService;
 
 public class ServerService : BackgroundService
 {
-    private readonly ILogger<ServerService> _logger;
-
-    public ServerService(ILogger<ServerService> logger)
-    {
-        _logger = logger;
-    }
-
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
@@ -42,8 +35,11 @@ public class ServerService : BackgroundService
                     Byte[] receiveBytes = udpClient.Receive(ref RemoteIpEndPoint);
                     message = Encoding.ASCII.GetString(receiveBytes);
 
-                    // Uses the IPEndPoint object to determine which of these two hosts responded.
-                    Console.WriteLine("This is the message you received: " + message);
+                    if(message != null)
+                    {
+                        // Uses the IPEndPoint object to determine which of these two hosts responded.
+                        Console.WriteLine("This is the message you received: " + message);
+                    }
                 }
                 while (message != "exit");
                 udpClient.Close();
