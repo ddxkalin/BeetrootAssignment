@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-Messager-A1E9A0A1-BE42-466C-81FF-DC18790FCF91</UserSecretsId>
+    <UserSecretsId>dotnet-UDPServerService-6EBE5A11-1BB3-40BC-A295-D269DA9A6344</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

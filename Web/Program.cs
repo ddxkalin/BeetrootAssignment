@@ -1,19 +1,21 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
-using Services;
-using Web.HostedServices;
+using Microsoft.Extensions.Configuration;
+using UDPClientService;
+using UDPServerService;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddDbContext<ApplicationDbContext>(opt =>
-    //opt.UseNpgsql(builder.Configuration.GetConnectionString("AppDB")));
+builder.Services.AddHostedService<ClientService>();
+builder.Services.AddHostedService<ServerService>();
 
-builder.Services.AddHostedService<MyBackgroundService>();
-// builder.Services.AddHostedService<Worker>();
-
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("UDP_ClientConnection")
+    )
+);
 
 var app = builder.Build();
 

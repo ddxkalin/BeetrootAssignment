@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Receiver": {
+    "UDPServerService": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"

@@ -1,9 +1,9 @@
-﻿using Messager;
+﻿using UDPServerService;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
-        services.AddHostedService<Worker>();
+        services.AddHostedService<ServerService>();
     })
     .Build();
 

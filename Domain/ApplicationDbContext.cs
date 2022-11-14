@@ -11,13 +11,18 @@ namespace Domain
         {
         }
 
-        public DbSet<Sender> Senders { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.UseNpgsql("Host=localhost;Database=UDP_Client;Username=master;Password=12345678");
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<Server> Servers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder.UseSerialColumns();
+            base.OnModelCreating(builder);
         }
-
     }
 }
 

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Messager": {
+    "UDPClientService": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
